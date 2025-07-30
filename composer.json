@@ -1,13 +1,13 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/livewire-starter-kit",
+    "name": "arthurwillers/aurum",
     "type": "project",
-    "description": "The official Laravel starter kit for Livewire.",
+    "description": "Aurum is a personal finance manager built with Laravel and Livewire.",
     "keywords": [
         "laravel",
         "framework"
     ],
-    "license": "MIT",
+    "license": "GPL-3.0-or-later",
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.0",
