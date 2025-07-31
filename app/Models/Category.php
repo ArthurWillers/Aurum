@@ -44,4 +44,20 @@ class Category extends Model
     {
         return $this->type === CategoryType::Income;
     }
+
+    /**
+     * Retorna todas as despesas associadas a esta categoria
+     */
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class);
+    }
+
+    /** 
+     * Retorna todas as receitas associadas a esta categoria
+     */
+    public function incomes()
+    {
+        return $this->hasMany(Income::class);
+    }
 }
