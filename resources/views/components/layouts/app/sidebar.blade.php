@@ -23,17 +23,17 @@
                     wire:navigate>
                     Dashboard
                 </flux:navlist.item>
-
-                {{-- 
+                
+                <flux:navlist.item icon="arrow-trending-up" :href="route('incomes.index')"
+                    :current="request()->routeIs('incomes.*')" wire:navigate>
+                    Receitas
+                </flux:navlist.item>
 
                 <flux:navlist.item icon="arrow-trending-down" :href="route('expenses.index')"
                     :current="request()->routeIs('expenses.*')" wire:navigate>
-                    Saídas
-                </flux:navlist.item> --}}
-                <flux:navlist.item icon="arrow-trending-up" :href="route('incomes.index')"
-                    :current="request()->routeIs('incomes.*')" wire:navigate>
-                    Entradas
+                    Despesas
                 </flux:navlist.item>
+                
                 <flux:navlist.item icon="tag" :href="route('categories.index')"
                     :current="request()->routeIs('categories.*')" wire:navigate>
                     Categorias
