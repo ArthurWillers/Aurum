@@ -5,6 +5,9 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Dashboard;
+use App\Livewire\Categories\Index as CategoriesIndex;
+use App\Livewire\Categories\Create as CategoriesCreate;
+use App\Livewire\Categories\Edit as CategoriesEdit;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +22,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/profile', Profile::class)->name('settings.profile');
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
+
+    // Rotas de Categorias
+    Route::get('categories', CategoriesIndex::class)->name('categories.index');
+    Route::get('categories/create', CategoriesCreate::class)->name('categories.create');
+    Route::get('categories/{category}/edit', CategoriesEdit::class)->name('categories.edit');
 
 });
 
