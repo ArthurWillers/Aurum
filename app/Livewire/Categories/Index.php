@@ -23,7 +23,7 @@ class Index extends Component
     public function delete(Category $category)
     {
         // Garante que o usuário logado só pode excluir suas próprias categorias.
-        if ($category->user_id !== Auth::user()->id()) {
+        if ($category->user_id !== Auth::id()) {
             session()->flash('error', 'Você não tem permissão para excluir esta categoria.');
             return;
         }
