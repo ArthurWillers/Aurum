@@ -63,7 +63,7 @@
                 @empty
                     <tr>
                         <td colspan="5" class="px-6 py-12 text-center text-sm text-zinc-600 dark:text-zinc-200">
-                            Você ainda não cadastrou nenhuma receita.
+                            Você ainda não cadastrou nenhuma receita nesse mês.
                         </td>
                     </tr>
                 @endforelse
