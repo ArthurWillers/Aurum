@@ -53,9 +53,9 @@
                             permite ao usuário registrar e acompanhar suas transações de entrada e saída, além de
                             organizá-las em categorias personalizáveis para melhor análise e controle financeiro. A
                             aplicação foi construída utilizando tecnologias modernas como <strong
-                                class="font-semibold text-white">Laravel</strong> para o backend, <strong
-                                class="font-semibold text-white">Livewire</strong> como starter-kit de gerenciamento de usuários e
-                            <strong class="font-semibold text-white">TailwindCSS</strong> para a interface.
+                                class="font-semibold text-white">Laravel</strong>, <strong
+                                class="font-semibold text-white">Livewire</strong> e 
+                            <strong class="font-semibold text-white">TailwindCSS</strong>.
                         </p>
                     </div>
 

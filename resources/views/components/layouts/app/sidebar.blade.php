@@ -20,7 +20,7 @@
                     Dashboard
                 </flux:navlist.item>
 
-                <flux:navlist.item icon="arrow-trending-up" :href="route('incomes.index')"
+                {{-- <flux:navlist.item icon="arrow-trending-up" :href="route('incomes.index')"
                     :current="request()->routeIs('incomes.*')" wire:navigate>
                     Entradas
                 </flux:navlist.item>
@@ -33,7 +33,7 @@
                 <flux:navlist.item icon="tag" :href="route('categories.index')"
                     :current="request()->routeIs('categories.*')" wire:navigate>
                     Categorias
-                </flux:navlist.item>
+                </flux:navlist.item> --}}
             </flux:navlist.group>
         </flux:navlist>
 
