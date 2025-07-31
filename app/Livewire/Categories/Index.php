@@ -14,7 +14,7 @@ class Index extends Component
 
     public function render()
     {
-        $categories = Auth::user()->categories()->paginate(10);
+        $categories = Auth::user()->categories()->latest()->paginate(10);
 
         return view('livewire.categories.index', compact('categories'));
     }
