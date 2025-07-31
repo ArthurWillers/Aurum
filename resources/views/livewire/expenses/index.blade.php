@@ -57,9 +57,9 @@
                                 <flux:button icon="ellipsis-horizontal" />
                                 <flux:menu>
                                     <flux:menu.item href="{{ route('expenses.edit', $expense) }}" wire:navigate.persist
-                                        icon="pencil" label="Editar" />
+                                        icon="pencil">Editar</flux:menu.item>
                                     <flux:menu.item wire:click.prevent="delete({{ $expense->id }})" icon="trash"
-                                        variant="danger" label="Excluir" />
+                                        variant="danger">Excluir</flux:menu.item>
                                 </flux:menu>
                             </flux:dropdown>
                         </td>
