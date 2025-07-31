@@ -13,6 +13,10 @@
             <x-app-logo />
         </a>
 
+        <div class="mb-4">
+            <livewire:month-selector />
+        </div>
+
         <flux:navlist variant="outline">
             <flux:navlist.group class="grid">
                 <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')"
@@ -20,15 +24,16 @@
                     Dashboard
                 </flux:navlist.item>
 
-                {{-- <flux:navlist.item icon="arrow-trending-up" :href="route('incomes.index')"
-                    :current="request()->routeIs('incomes.*')" wire:navigate>
-                    Entradas
-                </flux:navlist.item>
+                {{-- 
 
                 <flux:navlist.item icon="arrow-trending-down" :href="route('expenses.index')"
                     :current="request()->routeIs('expenses.*')" wire:navigate>
                     Saídas
                 </flux:navlist.item> --}}
+                <flux:navlist.item icon="arrow-trending-up" :href="route('incomes.index')"
+                    :current="request()->routeIs('incomes.*')" wire:navigate>
+                    Entradas
+                </flux:navlist.item>
                 <flux:navlist.item icon="tag" :href="route('categories.index')"
                     :current="request()->routeIs('categories.*')" wire:navigate>
                     Categorias
