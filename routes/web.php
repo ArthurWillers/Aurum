@@ -4,7 +4,7 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
-
+use App\Livewire\Dashboard;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,7 +12,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     // Rotas do Painel
-    Route::view('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
     // Rotas de Configurações
     Route::redirect('settings', 'settings/profile');
