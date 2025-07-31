@@ -56,4 +56,12 @@ class User extends Authenticatable
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
+
+    /**
+     * Get the categories associated with the user.
+     */
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
 }
