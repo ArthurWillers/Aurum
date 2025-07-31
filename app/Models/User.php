@@ -64,4 +64,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Category::class);
     }
+
+    /**
+     * Get the expenses associated with the user.
+     */
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class);
+    }
+
+    /**
+     * Get the incomes associated with the user.
+     */
+    public function incomes()
+    {
+        return $this->hasMany(Income::class);
+    }
 }
