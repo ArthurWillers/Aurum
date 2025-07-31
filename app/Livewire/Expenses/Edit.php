@@ -2,12 +2,77 @@
 
 namespace App\Livewire\Expenses;
 
+use App\Models\Category;
+use App\Models\Expense;
 use Livewire\Component;
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Auth;
 
+#[Title('Editar Despesa')]
 class Edit extends Component
 {
+    // Propriedade para guardar a despesa que estamos editando
+    public Expense $expense;
+
+    // --- Propriedades do Formulário ---
+    #[Validate('required|string|min:3|max:255')]
+    public string $description = '';
+
+    #[Validate('required|numeric|min:0.01')]
+    public string $amount = '';
+
+    #[Validate('required|date')]
+    public string $date = '';
+
+    #[Validate('required|exists:categories,id')]
+    public string $category_id = '';
+
+    /**
+     * Carrega a despesa e preenche o formulário.
+     */
+    public function mount(Expense $expense)
+    {
+        // Garante que o usuário só pode editar suas próprias despesas
+        if ($expense->user_id !== Auth::id()) {
+            abort(403); // Proibido
+        }
+
+        $this->expense = $expense;
+
+        // Preenche as propriedades do formulário com os dados da despesa
+        $this->description = $expense->description;
+        $this->amount = $expense->amount;
+        $this->date = $expense->date->format('Y-m-d');
+        $this->category_id = $expense->category_id;
+    }
+
+    /**
+     * Atualiza os dados da despesa no banco.
+     */
+    public function update()
+    {
+        $this->validate();
+
+        $this->expense->update([
+            'description' => $this->description,
+            'amount' => $this->amount,
+            'date' => $this->date,
+            'category_id' => $this->category_id,
+        ]);
+
+        session()->flash('success', 'Despesa atualizada com sucesso!');
+
+        return $this->redirectRoute('expenses.index', navigate: true);
+    }
+
+    /**
+     * Renderiza a view.
+     */
     public function render()
     {
-        return view('livewire.expenses.edit');
+        // Busca as categorias de despesa para o select
+        $categories = Auth::user()->categories()->where('type', 'expense')->get();
+        return view('livewire.expenses.edit', ['categories' => $categories]);
     }
 }
