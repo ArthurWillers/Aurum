@@ -28,12 +28,11 @@
                 <flux:navlist.item icon="arrow-trending-down" :href="route('expenses.index')"
                     :current="request()->routeIs('expenses.*')" wire:navigate>
                     Saídas
-                </flux:navlist.item>
-
+                </flux:navlist.item> --}}
                 <flux:navlist.item icon="tag" :href="route('categories.index')"
                     :current="request()->routeIs('categories.*')" wire:navigate>
                     Categorias
-                </flux:navlist.item> --}}
+                </flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 
