@@ -3,7 +3,7 @@
 
     {{-- Cabeçalho da página com título e botão para nova receita --}}
     <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Minhas Receitas</h2>
+        <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Receitas</h2>
         <flux:button href="{{ route('incomes.create') }}" wire:navigate.persist icon="plus">
             Nova Receita
         </flux:button>

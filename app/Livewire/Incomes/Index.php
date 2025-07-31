@@ -12,7 +12,7 @@ use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 
 #[Layout('components.layouts.app')]
-#[Title('Minhas Receitas')]
+#[Title('Receitas')]
 class Index extends Component
 {
     use WithPagination;
