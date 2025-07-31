@@ -11,6 +11,9 @@ use App\Livewire\Categories\Edit as CategoriesEdit;
 use App\Livewire\Incomes\Index as IncomesIndex;
 use App\Livewire\Incomes\Create as IncomesCreate;
 use App\Livewire\Incomes\Edit as IncomesEdit;
+use App\Livewire\Expenses\Index as ExpensesIndex;
+use App\Livewire\Expenses\Create as ExpensesCreate;
+use App\Livewire\Expenses\Edit as ExpensesEdit;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,6 +38,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/incomes', IncomesIndex::class)->name('incomes.index');
     Route::get('/incomes/create', IncomesCreate::class)->name('incomes.create');
     Route::get('/incomes/{income}/edit', IncomesEdit::class)->name('incomes.edit');
+
+    // Rotas de Despesas
+    Route::get('/expenses', ExpensesIndex::class)->name('expenses.index');
+    Route::get('/expenses/create', ExpensesCreate::class)->name('expenses.create');
+    Route::get('/expenses/{expense}/edit', ExpensesEdit::class)->name('expenses.edit');
 
 });
 
