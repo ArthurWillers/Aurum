@@ -81,7 +81,7 @@ class ExpenseFactory extends Factory
   public function installment(?int $totalInstallments = null): static
   {
     $total = $totalInstallments ?? fake()->numberBetween(2, 12);
-    $uuid = Str::uuid();
+    $uuid = (string) Str::uuid();
 
     return $this->state(fn(array $attributes) => [
       'transaction_group_uuid' => $uuid,
