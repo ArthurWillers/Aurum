@@ -1,8 +1,5 @@
 <div>
-    {{-- O formulário chama o método "save" do componente ao ser enviado --}}
     <form wire:submit="save" class="flex flex-col gap-6">
-
-        {{-- Cabeçalho da página com título e botões --}}
         <div class="flex justify-between items-center">
             <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">
                 Nova Categoria
@@ -14,10 +11,10 @@
             <div class="flex flex-col gap-6">
 
                 <flux:input wire:model="name" label="Nome da Categoria" id="name"
-                    placeholder="Ex: Salário, Supermercado, Lazer" autofocus/>
+                    placeholder="Ex: Salário, Supermercado, Lazer" autofocus />
 
                 <flux:radio.group wire:model="type" label="Tipo" class="py-1">
-                    <flux:radio value="expense" label="Despesa"/>
+                    <flux:radio value="expense" label="Despesa" />
                     <flux:radio value="income" label="Receita" />
                 </flux:radio.group>
 

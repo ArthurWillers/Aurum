@@ -1,8 +1,5 @@
 <div>
-    {{-- O formulário chama o método "update" do componente ao ser enviado --}}
     <form wire:submit="update" class="flex flex-col gap-6">
-
-        {{-- Cabeçalho da página com título e botões --}}
         <div class="flex justify-between items-center">
             <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">
                 Editar Categoria

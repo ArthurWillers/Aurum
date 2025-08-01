@@ -20,7 +20,6 @@ class Index extends Component
      */
     public function delete(Expense $expense)
     {
-        // Garante que o usuário só pode excluir suas próprias despesas
         if ($expense->user_id !== Auth::id()) {
             session()->flash('error', 'Você não tem permissão para excluir esta despesa.');
             return;
@@ -31,7 +30,7 @@ class Index extends Component
     }
 
     /**
-     * Renderiza o componente, ouvindo o evento 'month-changed'.
+     * Renderiza o componente.
      */
     #[On('month-changed')]
     public function render()

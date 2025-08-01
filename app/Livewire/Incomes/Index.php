@@ -22,7 +22,6 @@ class Index extends Component
      */
     public function delete(Income $income)
     {
-        // Garante que o usuário logado só pode excluir suas próprias receitas.
         if ($income->user_id !== Auth::id()) {
             session()->flash('error', 'Você não tem permissão para excluir esta receita.');
             return;

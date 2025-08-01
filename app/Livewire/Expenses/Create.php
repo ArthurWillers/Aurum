@@ -12,22 +12,17 @@ use Illuminate\Support\Facades\Auth;
 #[Title('Nova Despesa')]
 class Create extends Component
 {
-    // --- Propriedades ---
-    // Apenas as propriedades que são *sempre* validadas da mesma forma ficam com atributos.
     #[Validate('required|string|min:3|max:255')]
     public string $description = '';
 
     #[Validate('required|exists:categories,id')]
     public string $category_id = '';
 
-    // As propriedades condicionais ficam sem atributos de validação aqui.
     public string $amount = '';
     public string $date = '';
     public string $total_amount = '';
     public ?int $installments = null;
     public ?int $months = null;
-
-    // --- Controle da UI ---
     public string $expenseType = 'single'; // 'single', 'recurring', 'installment'
 
     /**
@@ -63,10 +58,8 @@ class Create extends Component
             $rules['installments'] = 'required|integer|min:2|max:36';
         }
 
-        // Validamos usando as regras que acabamos de montar.
         $this->validate($rules);
 
-        // O resto da lógica de salvar continua a mesma.
         switch ($this->expenseType) {
             case 'single':
                 $this->saveSingleExpense();

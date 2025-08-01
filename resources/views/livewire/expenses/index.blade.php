@@ -8,7 +8,6 @@
         </flux:button>
     </div>
 
-    {{-- Tabela de Despesas --}}
     <div
         class="bg-white dark:bg-zinc-800 rounded-lg shadow-xl border border-zinc-200 dark:border-zinc-700 overflow-x-auto">
         <table class="w-full min-w-full text-left">
@@ -36,7 +35,6 @@
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-zinc-900 dark:text-white">
                             {{ $expense->description }}
-                            {{-- Adiciona a informação da parcela, se houver --}}
                             @if ($expense->total_installments)
                                 <span class="text-xs text-zinc-500 dark:text-zinc-400">
                                     ({{ $expense->installment_number }}/{{ $expense->total_installments }})
@@ -75,7 +73,6 @@
         </table>
     </div>
 
-    {{-- Paginação --}}
     <div class="mt-6">
         {{ $expenses->links() }}
     </div>

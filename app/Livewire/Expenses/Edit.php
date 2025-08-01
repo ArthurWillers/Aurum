@@ -12,10 +12,8 @@ use Illuminate\Support\Facades\Auth;
 #[Title('Editar Despesa')]
 class Edit extends Component
 {
-    // Propriedade para guardar a despesa que estamos editando
     public Expense $expense;
 
-    // --- Propriedades do Formulário ---
     #[Validate('required|string|min:3|max:255')]
     public string $description = '';
 
@@ -33,14 +31,12 @@ class Edit extends Component
      */
     public function mount(Expense $expense)
     {
-        // Garante que o usuário só pode editar suas próprias despesas
         if ($expense->user_id !== Auth::id()) {
-            abort(403); // Proibido
+            abort(403);
         }
 
         $this->expense = $expense;
 
-        // Preenche as propriedades do formulário com os dados da despesa
         $this->description = $expense->description;
         $this->amount = $expense->amount;
         $this->date = $expense->date->format('Y-m-d');
@@ -71,7 +67,6 @@ class Edit extends Component
      */
     public function render()
     {
-        // Busca as categorias de despesa para o select
         $categories = Auth::user()->categories()->where('type', 'expense')->get();
         return view('livewire.expenses.edit', ['categories' => $categories]);
     }

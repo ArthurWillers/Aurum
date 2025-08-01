@@ -25,13 +25,11 @@ class Create extends Component
     {
         $this->validate();
 
-        // Cria a categoria no banco de dados
         Auth::user()->categories()->create([
             'name' => $this->name,
             'type' => $this->type,
         ]);
 
-        // Redireciona para a lista de categorias
         session()->flash('success', 'Categoria criada com sucesso!');
         return $this->redirect('/categories', navigate: true);
     }
