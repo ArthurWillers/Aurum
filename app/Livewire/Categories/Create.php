@@ -13,7 +13,7 @@ class Create extends Component
     #[Validate('required|string|min:3|max:255')]
     public string $name = '';
 
-    #[Validate('required', new Enum(CategoryType::class))]
+    #[Validate(['required', new Enum(CategoryType::class)])]
     public string $type = '';
 
     /**
