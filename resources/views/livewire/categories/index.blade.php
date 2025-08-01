@@ -27,7 +27,7 @@
             </thead>
             <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
                 @forelse ($categories as $category)
-                    <tr>
+                    <tr wire:key="category-{{ $category->id }}">
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-zinc-900 dark:text-white">
                             {{ $category->name }}
                         </td>
@@ -45,8 +45,10 @@
                                         wire:navigate.persist icon="pencil" iconVariant="outline" label="Editar">Editar
                                     </flux:menu.item>
 
-                                    <flux:menu.item wire:click="delete({{ $category->id }})" class="cursor-pointer"
-                                        icon="trash" iconVariant="outline" variant="danger">Excluir</flux:menu.item>
+                                    <flux:menu.item wire:click="delete({{ $category->id }})"
+                                        wire:confirm="Tem certeza que deseja excluir esta categoria?"
+                                        class="cursor-pointer" icon="trash" iconVariant="outline" variant="danger">
+                                        Excluir</flux:menu.item>
                                 </flux:menu>
 
                             </flux:dropdown>

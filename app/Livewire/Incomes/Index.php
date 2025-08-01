@@ -10,6 +10,7 @@ use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 #[Layout('components.layouts.app')]
 #[Title('Receitas')]
@@ -22,9 +23,20 @@ class Index extends Component
      */
     public function delete(Income $income)
     {
-        $this->authorize('delete', $income);
+        try {
+            $this->authorize('delete', $income);
 
-        $income->delete();
+            $income->delete();
+
+            // Reset pagination se necessário
+            $this->resetPage();
+
+            // Dispatch event para atualizar outros componentes se necessário
+            $this->dispatch('income-deleted');
+        } catch (\Exception $e) {
+            // Log do erro para debug
+            Log::error('Erro ao deletar receita: ' . $e->getMessage());
+        }
     }
 
     #[On('month-changed')]

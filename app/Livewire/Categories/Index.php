@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
 use Livewire\Attributes\Title;
 use App\Models\Category;
+use Illuminate\Support\Facades\Log;
 
 #[Title('Categorias')]
 class Index extends Component
@@ -22,13 +23,24 @@ class Index extends Component
 
     public function delete(Category $category)
     {
-        $this->authorize('delete', $category);
+        try {
+            $this->authorize('delete', $category);
 
-        if ($category->expenses()->count() > 0 || $category->incomes()->count() > 0) {
-            // Não é possível excluir categoria com registros associados
-            return;
+            if ($category->expenses()->count() > 0 || $category->incomes()->count() > 0) {
+                // Não é possível excluir categoria com registros associados
+                return;
+            }
+
+            $category->delete();
+
+            // Reset pagination se necessário
+            $this->resetPage();
+
+            // Dispatch event para atualizar outros componentes se necessário
+            $this->dispatch('category-deleted');
+        } catch (\Exception $e) {
+            // Log do erro para debug
+            Log::error('Erro ao deletar categoria: ' . $e->getMessage());
         }
-
-        $category->delete();
     }
 }

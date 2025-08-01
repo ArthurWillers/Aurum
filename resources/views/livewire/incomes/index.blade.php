@@ -30,7 +30,7 @@
             </thead>
             <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
                 @forelse ($incomes as $income)
-                    <tr>
+                    <tr wire:key="income-{{ $income->id }}">
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-zinc-900 dark:text-white">
                             {{ $income->description }}
                         </td>
@@ -50,7 +50,8 @@
                                 <flux:menu>
                                     <flux:menu.item href="{{ route('incomes.edit', $income) }}" wire:navigate.persist
                                         icon="pencil" label="Editar">Editar</flux:menu.item>
-                                    <flux:menu.item wire:click.prevent="delete({{ $income->id }})" icon="trash"
+                                    <flux:menu.item wire:click="delete({{ $income->id }})"
+                                        wire:confirm="Tem certeza que deseja excluir esta receita?" icon="trash"
                                         variant="danger" label="Excluir">Excluir</flux:menu.item>
                                 </flux:menu>
                             </flux:dropdown>

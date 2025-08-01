@@ -30,7 +30,7 @@
             </thead>
             <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
                 @forelse ($expenses as $expense)
-                    <tr>
+                    <tr wire:key="expense-{{ $expense->id }}">
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-zinc-900 dark:text-white">
                             {{ $expense->description }}
                             @if ($expense->total_installments)
@@ -54,7 +54,8 @@
                                 <flux:menu>
                                     <flux:menu.item href="{{ route('expenses.edit', $expense) }}" wire:navigate.persist
                                         icon="pencil">Editar</flux:menu.item>
-                                    <flux:menu.item wire:click.prevent="delete({{ $expense->id }})" icon="trash"
+                                    <flux:menu.item wire:click="delete({{ $expense->id }})"
+                                        wire:confirm="Tem certeza que deseja excluir esta despesa?" icon="trash"
                                         variant="danger">Excluir</flux:menu.item>
                                 </flux:menu>
                             </flux:dropdown>

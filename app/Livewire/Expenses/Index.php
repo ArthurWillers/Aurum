@@ -9,6 +9,7 @@ use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 #[Title('Despesas')]
 class Index extends Component
@@ -20,9 +21,20 @@ class Index extends Component
      */
     public function delete(Expense $expense)
     {
-        $this->authorize('delete', $expense);
+        try {
+            $this->authorize('delete', $expense);
 
-        $expense->delete();
+            $expense->delete();
+
+            // Reset pagination se necessário
+            $this->resetPage();
+
+            // Dispatch event para atualizar outros componentes se necessário
+            $this->dispatch('expense-deleted');
+        } catch (\Exception $e) {
+            // Log do erro para debug
+            Log::error('Erro ao deletar despesa: ' . $e->getMessage());
+        }
     }
 
     /**
