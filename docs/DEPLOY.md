@@ -36,7 +36,7 @@ cd $APP_DIR || exit 1
 
 # Colocar aplicação em modo de manutenção
 echo "Ativando modo de manutenção..."
-sudo php artisan down --message="Atualizando sistema..." --retry=60
+sudo php artisan down --retry=60
 
 # Reset e pull do repositório
 echo "Atualizando código..."
@@ -129,15 +129,15 @@ log() {
 }
 
 success() {
-    echo -e "${GREEN}✅ $1${NC}" | tee -a $LOG_FILE
+    echo -e "${GREEN}[OK] $1${NC}" | tee -a $LOG_FILE
 }
 
 warning() {
-    echo -e "${YELLOW}⚠️  $1${NC}" | tee -a $LOG_FILE
+    echo -e "${YELLOW}[WARNING] $1${NC}" | tee -a $LOG_FILE
 }
 
 error() {
-    echo -e "${RED}❌ $1${NC}" | tee -a $LOG_FILE
+    echo -e "${RED}[ERROR] $1${NC}" | tee -a $LOG_FILE
     exit 1
 }
 
@@ -215,7 +215,7 @@ fi
 
 # 4. Colocar aplicação em modo de manutenção
 log "Ativando modo de manutenção..."
-php artisan down --message="Sistema em atualização. Voltamos em alguns minutos..." --retry=60
+php artisan down --retry=60
 success "Modo de manutenção ativado"
 
 # 5. Atualizar código
@@ -268,16 +268,11 @@ success "Migrações executadas"
 
 # 13. Reiniciar serviços
 log "Reiniciando serviços..."
-systemctl restart php8.2-fpm
 systemctl restart nginx
 
 # Verificar se serviços estão rodando
 if ! systemctl is-active --quiet nginx; then
     error "Nginx não está rodando após reiniciar"
-fi
-
-if ! systemctl is-active --quiet php8.2-fpm; then
-    error "PHP-FPM não está rodando após reiniciar"
 fi
 
 success "Serviços reiniciados"
