@@ -31,9 +31,7 @@ class Edit extends Component
      */
     public function mount(Expense $expense)
     {
-        if ($expense->user_id !== Auth::id()) {
-            abort(403);
-        }
+        $this->authorize('update', $expense);
 
         $this->expense = $expense;
 
@@ -48,6 +46,8 @@ class Edit extends Component
      */
     public function update()
     {
+        $this->authorize('update', $this->expense);
+
         $this->validate();
 
         $this->expense->update([

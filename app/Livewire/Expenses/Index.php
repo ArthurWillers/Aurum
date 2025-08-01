@@ -20,10 +20,7 @@ class Index extends Component
      */
     public function delete(Expense $expense)
     {
-        if ($expense->user_id !== Auth::id()) {
-            session()->flash('error', 'Você não tem permissão para excluir esta despesa.');
-            return;
-        }
+        $this->authorize('delete', $expense);
 
         $expense->delete();
         session()->flash('success', 'Despesa excluída com sucesso.');

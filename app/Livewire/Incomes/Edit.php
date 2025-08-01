@@ -27,6 +27,8 @@ class Edit extends Component
 
     public function mount()
     {
+        $this->authorize('update', $this->income);
+
         $this->description = $this->income->description;
         $this->amount = $this->income->amount;
         $this->date = $this->income->date->format('Y-m-d');
@@ -35,6 +37,8 @@ class Edit extends Component
 
     public function update()
     {
+        $this->authorize('update', $this->income);
+
         $this->validate();
         $this->income->update([
             'description' => $this->description,

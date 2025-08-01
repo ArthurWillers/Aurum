@@ -22,10 +22,8 @@ class Index extends Component
 
     public function delete(Category $category)
     {
-        if ($category->user_id !== Auth::id()) {
-            session()->flash('error', 'Você não tem permissão para excluir esta categoria.');
-            return;
-        }
+        $this->authorize('delete', $category);
+
         if ($category->expenses()->count() > 0 || $category->incomes()->count() > 0) {
             session()->flash('error', 'Não é possível excluir a categoria porque ela possui despesas ou receitas associadas.');
             return;

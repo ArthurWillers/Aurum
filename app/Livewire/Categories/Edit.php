@@ -23,12 +23,16 @@ class Edit extends Component
 
     public function mount()
     {
+        $this->authorize('update', $this->category);
+
         $this->name = $this->category->name;
-        $this->type = $this->category->type->value;       
+        $this->type = $this->category->type->value;
     }
 
     public function update()
     {
+        $this->authorize('update', $this->category);
+
         $this->validate();
         $this->category->update([
             'name' => $this->name,

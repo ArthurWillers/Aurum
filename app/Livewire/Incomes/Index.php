@@ -22,10 +22,7 @@ class Index extends Component
      */
     public function delete(Income $income)
     {
-        if ($income->user_id !== Auth::id()) {
-            session()->flash('error', 'Você não tem permissão para excluir esta receita.');
-            return;
-        }
+        $this->authorize('delete', $income);
 
         $income->delete();
 
