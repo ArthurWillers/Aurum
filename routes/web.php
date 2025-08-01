@@ -3,6 +3,7 @@
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
+use App\Livewire\Settings\CurrencySettings;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Dashboard;
 use App\Livewire\Categories\Index as CategoriesIndex;
@@ -28,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/profile', Profile::class)->name('settings.profile');
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
+    Route::get('settings/currency', CurrencySettings::class)->name('settings.currency');
 
     // Rotas de Categorias
     Route::get('categories', CategoriesIndex::class)->name('categories.index');
@@ -43,7 +45,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/expenses', ExpensesIndex::class)->name('expenses.index');
     Route::get('/expenses/create', ExpensesCreate::class)->name('expenses.create');
     Route::get('/expenses/{expense}/edit', ExpensesEdit::class)->name('expenses.edit');
-
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

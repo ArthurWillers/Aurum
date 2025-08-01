@@ -53,6 +53,7 @@
   "Number of Installments": "Número de Parcelas",
   "Duration (months)": "Duração (meses)",
   "Total Amount": "Valor Total",
+  "Total Value": "Valor Total",
   "Purchase Date / Start": "Data da Compra / Início",
   "Receipt Date": "Data de Recebimento",
   "Select a category": "Selecione uma categoria",
@@ -81,5 +82,13 @@
   "Flexible Categories": "Categorias Flexíveis",
   "Dashboard overview of balance, income and expenses with charts for financial health analysis.": "Visão geral do saldo, receitas e despesas com gráficos para análise da saúde financeira.",
   "Interface to add, edit and view all financial movements in an organized way.": "Interface para adicionar, editar e visualizar todas as movimentações financeiras de forma organizada.",
-  "System to create and manage categories with custom colors, making it easier to identify expenses.": "Sistema para criar e gerenciar categorias com cores personalizadas, facilitando a identificação dos gastos."
+  "System to create and manage categories with custom colors, making it easier to identify expenses.": "Sistema para criar e gerenciar categorias com cores personalizadas, facilitando a identificação dos gastos.",
+  "Currency Settings": "Configurações de Moeda",
+  "Choose your preferred currency symbol": "Escolha o símbolo da sua moeda preferida",
+  "Currency Symbol": "Símbolo da Moeda",
+  "Select currency symbol": "Selecione o símbolo da moeda",
+  "Dollar": "Dólar",
+  "Real": "Real",
+  "Currency updated successfully.": "Moeda atualizada com sucesso.",
+  "Currency": "Moeda"
 }

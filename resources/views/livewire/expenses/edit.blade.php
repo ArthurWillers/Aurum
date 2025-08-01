@@ -11,7 +11,8 @@
 
                 <flux:input wire:model="description" :label="__('Expense Description')" autofocus />
 
-                <flux:input wire:model="amount" label="{{ __('Amount') }} (R$)" type="number" step="0.01" />
+                <flux:input wire:model="amount" label="{{ __('Value') }} ({{ auth()->user()->currency_symbol ?? '$' }})"
+                    type="number" step="0.01" />
 
                 <flux:input wire:model="date" :label="__('Date')" type="date" />
 

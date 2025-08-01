@@ -21,12 +21,14 @@
                     autofocus />
 
                 <div x-show="expenseType === 'single' || expenseType === 'recurring'">
-                    <flux:input wire:model="amount" label="{{ __('Amount') }} (R$)" type="number" step="0.01"
-                        placeholder="150.00" />
+                    <flux:input wire:model="amount"
+                        label="{{ __('Value') }} ({{ auth()->user()->currency_symbol ?? '$' }})" type="number"
+                        step="0.01" placeholder="150.00" />
                 </div>
 
                 <div x-show="expenseType === 'installment'">
-                    <flux:input wire:model="total_amount" label="{{ __('Total Amount') }} (R$)" type="number"
+                    <flux:input wire:model="total_amount"
+                        label="{{ __('Total Value') }} ({{ auth()->user()->currency_symbol ?? '$' }})" type="number"
                         step="0.01" placeholder="1200.00" />
                 </div>
 

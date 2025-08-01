@@ -40,7 +40,8 @@
                             @endif
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 dark:text-red-400 font-semibold">
-                            - R$ {{ number_format($expense->amount, 2, ',', '.') }}
+                            - {{ auth()->user()->currency_symbol ?? '$' }}
+                            {{ number_format($expense->amount, 2, ',', '.') }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-zinc-600 dark:text-zinc-300">
                             {{ $expense->category->name ?? __('No category') }}
