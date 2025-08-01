@@ -30,7 +30,6 @@ class Create extends Component
             'type' => $this->type,
         ]);
 
-        session()->flash('success', 'Categoria criada com sucesso!');
         return $this->redirect('/categories', navigate: true);
     }
 

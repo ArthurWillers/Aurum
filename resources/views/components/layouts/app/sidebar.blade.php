@@ -23,7 +23,7 @@
                     wire:navigate>
                     Dashboard
                 </flux:navlist.item>
-                
+
                 <flux:navlist.item icon="arrow-trending-up" :href="route('incomes.index')"
                     :current="request()->routeIs('incomes.*')" wire:navigate>
                     Receitas
@@ -33,7 +33,7 @@
                     :current="request()->routeIs('expenses.*')" wire:navigate>
                     Despesas
                 </flux:navlist.item>
-                
+
                 <flux:navlist.item icon="tag" :href="route('categories.index')"
                     :current="request()->routeIs('categories.*')" wire:navigate>
                     Categorias

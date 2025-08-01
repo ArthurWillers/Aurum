@@ -57,8 +57,6 @@ class Edit extends Component
             'category_id' => $this->category_id,
         ]);
 
-        session()->flash('success', 'Despesa atualizada com sucesso!');
-
         return $this->redirectRoute('expenses.index', navigate: true);
     }
 

@@ -50,8 +50,6 @@ class Create extends Component
             'category_id' => $this->category_id,
         ]);
 
-        session()->flash('success', 'Receita adicionada com sucesso!');
-
         return $this->redirectRoute('incomes.index', navigate: true);
     }
 

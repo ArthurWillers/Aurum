@@ -46,7 +46,6 @@ class Edit extends Component
             'date' => $this->date,
             'category_id' => $this->category_id,
         ]);
-        session()->flash('success', 'Receita atualizada com sucesso!');
         return $this->redirectRoute('incomes.index', navigate: true);
     }
 

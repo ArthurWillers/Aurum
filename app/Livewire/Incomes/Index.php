@@ -25,8 +25,6 @@ class Index extends Component
         $this->authorize('delete', $income);
 
         $income->delete();
-
-        session()->flash('success', 'Receita excluída com sucesso.');
     }
 
     #[On('month-changed')]

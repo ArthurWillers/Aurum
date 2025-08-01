@@ -38,7 +38,6 @@ class Edit extends Component
             'name' => $this->name,
             'type' => $this->type,
         ]);
-        session()->flash('success', 'Categoria atualizada com sucesso!');
         return $this->redirect('/categories', navigate: true);
     }
 

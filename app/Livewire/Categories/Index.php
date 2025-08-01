@@ -25,12 +25,10 @@ class Index extends Component
         $this->authorize('delete', $category);
 
         if ($category->expenses()->count() > 0 || $category->incomes()->count() > 0) {
-            session()->flash('error', 'Não é possível excluir a categoria porque ela possui despesas ou receitas associadas.');
+            // Não é possível excluir categoria com registros associados
             return;
         }
 
         $category->delete();
-
-        session()->flash('success', 'Categoria excluída com sucesso.');
     }
 }

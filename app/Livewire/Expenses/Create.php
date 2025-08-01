@@ -72,7 +72,6 @@ class Create extends Component
                 break;
         }
 
-        session()->flash('success', 'Despesa salva com sucesso!');
         return $this->redirectRoute('expenses.index', navigate: true);
     }
 

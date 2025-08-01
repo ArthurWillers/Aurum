@@ -23,7 +23,6 @@ class Index extends Component
         $this->authorize('delete', $expense);
 
         $expense->delete();
-        session()->flash('success', 'Despesa excluída com sucesso.');
     }
 
     /**
