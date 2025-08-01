@@ -1,6 +1,6 @@
 <div>
     <div class="flex justify-between items-center mb-6">
-        <flux:heading class="text-xl">Categorias</flux:heading>
+        <flux:heading size="xl">Categorias</flux:heading>
 
         <flux:button href="{{ route('categories.create') }}" wire:navigate.persist icon="plus">Nova
             Categoria </flux:button>
