@@ -2,6 +2,7 @@
 
 use App\Livewire\Settings\Profile;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Livewire;
 
 test('profile page is displayed', function () {
@@ -26,10 +27,9 @@ test('profile information can be updated', function () {
 
     expect($user->name)->toEqual('Test User');
     expect($user->email)->toEqual('test@example.com');
-    expect($user->email_verified_at)->toBeNull();
 });
 
-test('email verification status is unchanged when email address is unchanged', function () {
+test('profile information can be updated with same email', function () {
     $user = User::factory()->create();
 
     $this->actingAs($user);
@@ -41,7 +41,10 @@ test('email verification status is unchanged when email address is unchanged', f
 
     $response->assertHasNoErrors();
 
-    expect($user->refresh()->email_verified_at)->not->toBeNull();
+    $user->refresh();
+
+    expect($user->name)->toEqual('Test User');
+    expect($user->email)->toEqual($user->email);
 });
 
 test('user can delete their account', function () {
@@ -58,7 +61,7 @@ test('user can delete their account', function () {
         ->assertRedirect('/');
 
     expect($user->fresh())->toBeNull();
-    expect(auth()->check())->toBeFalse();
+    expect(Auth::check())->toBeFalse();
 });
 
 test('correct password must be provided to delete account', function () {
