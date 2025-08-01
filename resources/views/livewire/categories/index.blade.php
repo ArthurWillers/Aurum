@@ -1,9 +1,9 @@
 <div>
     <div class="flex justify-between items-center mb-6">
-        <flux:heading size="xl">Categorias</flux:heading>
+        <flux:heading size="xl">{{ __('Categories') }}</flux:heading>
 
-        <flux:button href="{{ route('categories.create') }}" wire:navigate.persist icon="plus">Nova
-            Categoria </flux:button>
+        <flux:button href="{{ route('categories.create') }}" wire:navigate.persist icon="plus">{{ __('New Category') }}
+        </flux:button>
     </div>
 
     <div
@@ -13,15 +13,15 @@
                 <tr>
                     <th
                         class="px-6 py-3 text-left text-xs font-medium text-zinc-600 dark:text-zinc-200 uppercase tracking-wider">
-                        Nome
+                        {{ __('Name') }}
                     </th>
                     <th
                         class="px-6 py-3 text-left text-xs font-medium text-zinc-600 dark:text-zinc-200 uppercase tracking-wider">
-                        Tipo
+                        {{ __('Type') }}
                     </th>
                     <th
                         class="px-6 py-3 text-end text-xs font-medium text-zinc-600 dark:text-zinc-200 uppercase tracking-wider">
-                        Ações
+                        {{ __('Actions') }}
                     </th>
                 </tr>
             </thead>
@@ -33,7 +33,7 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <flux:badge :color="$category->isIncome() ? 'green' : 'red'">
-                                {{ $category->isIncome() ? 'Receita' : 'Despesa' }}
+                                {{ $category->isIncome() ? __('Income') : __('Expense') }}
                             </flux:badge>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -42,13 +42,14 @@
 
                                 <flux:menu>
                                     <flux:menu.item href="{{ route('categories.edit', $category) }}"
-                                        wire:navigate.persist icon="pencil" iconVariant="outline" label="Editar">Editar
+                                        wire:navigate.persist icon="pencil" iconVariant="outline"
+                                        :label="__('Edit')">{{ __('Edit') }}
                                     </flux:menu.item>
 
                                     <flux:menu.item wire:click="delete({{ $category->id }})"
-                                        wire:confirm="Tem certeza que deseja excluir esta categoria?"
+                                        wire:confirm="{{ __('Are you sure you want to delete this category?') }}"
                                         class="cursor-pointer" icon="trash" iconVariant="outline" variant="danger">
-                                        Excluir</flux:menu.item>
+                                        {{ __('Delete') }}</flux:menu.item>
                                 </flux:menu>
 
                             </flux:dropdown>
@@ -57,7 +58,7 @@
                 @empty
                     <tr>
                         <td colspan="3" class="px-6 py-12 text-center text-sm text-zinc-600 dark:text-zinc-200">
-                            Você ainda não cadastrou nenhuma categoria.
+                            {{ __('You haven\'t registered any categories yet.') }}
                         </td>
                     </tr>
                 @endforelse

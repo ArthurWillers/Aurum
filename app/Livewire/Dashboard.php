@@ -3,12 +3,10 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Livewire\Attributes\Title;
 use Livewire\Attributes\On;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-#[Title('Dashboard')]
 class Dashboard extends Component
 {
     public $totalIncomes = 0;

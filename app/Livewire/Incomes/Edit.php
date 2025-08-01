@@ -6,9 +6,7 @@ use Livewire\Component;
 use App\Models\Income;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Title;
 
-#[Title('Editar Receita')]
 class Edit extends Component
 {
     public Income $income;

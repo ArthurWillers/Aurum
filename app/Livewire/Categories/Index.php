@@ -5,11 +5,9 @@ namespace App\Livewire\Categories;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
-use Livewire\Attributes\Title;
 use App\Models\Category;
 use Illuminate\Support\Facades\Log;
 
-#[Title('Categorias')]
 class Index extends Component
 {
     use WithPagination;

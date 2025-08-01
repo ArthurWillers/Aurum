@@ -21,22 +21,22 @@
             <flux:navlist.group class="grid">
                 <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')"
                     wire:navigate>
-                    Dashboard
+                    {{ __('Dashboard') }}
                 </flux:navlist.item>
 
                 <flux:navlist.item icon="arrow-trending-up" :href="route('incomes.index')"
                     :current="request()->routeIs('incomes.*')" wire:navigate>
-                    Receitas
+                    {{ __('Incomes') }}
                 </flux:navlist.item>
 
                 <flux:navlist.item icon="arrow-trending-down" :href="route('expenses.index')"
                     :current="request()->routeIs('expenses.*')" wire:navigate>
-                    Despesas
+                    {{ __('Expenses') }}
                 </flux:navlist.item>
 
                 <flux:navlist.item icon="tag" :href="route('categories.index')"
                     :current="request()->routeIs('categories.*')" wire:navigate>
-                    Categorias
+                    {{ __('Categories') }}
                 </flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>

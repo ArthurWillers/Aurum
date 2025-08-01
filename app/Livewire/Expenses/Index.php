@@ -6,12 +6,10 @@ use App\Models\Expense;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Title;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
-#[Title('Despesas')]
 class Index extends Component
 {
     use WithPagination;

@@ -23,16 +23,16 @@
                     @auth
                         <a href="{{ url('/dashboard') }}"
                             class="flex items-center justify-center rounded-md bg-[#DAA520] px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-[#c5a435]">
-                            Dashboard
+                            {{ __('Dashboard') }}
                         </a>
                     @else
                         <a href="{{ route('login') }}"
                             class="flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold leading-6 text-zinc-100 ring-1 ring-white/20 transition hover:bg-white/10 hover:text-white">
-                            Entrar
+                            {{ __('Log in') }}
                         </a>
                         <a href="{{ route('register') }}"
                             class="flex items-center justify-center rounded-md bg-[#DAA520] px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-[#c5a435]">
-                            Criar Conta
+                            {{ __('Create Account') }}
                         </a>
                     @endauth
                 </div>
@@ -46,15 +46,15 @@
                     {{-- Coluna Esquerda --}}
                     <div class="text-left">
                         <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                            Gerenciador Financeiro Pessoal
+                            {{ __('Personal Financial Manager') }}
                         </h1>
                         <p class="mt-6 text-lg leading-8 text-gray-300 text-justify">
-                            Aurum é um software livre sob licença GPLv3, para gestão de finanças pessoais. O sistema
-                            permite ao usuário registrar e acompanhar suas transações de entrada e saída, além de
-                            organizá-las em categorias personalizáveis para melhor análise e controle financeiro. A
-                            aplicação foi construída utilizando tecnologias modernas como <strong
+                            Aurum is free software under GPLv3 license, for personal finance management. The system
+                            allows the user to register and track their income and expense transactions, as well as
+                            organize them into customizable categories for better analysis and financial control. The
+                            application was built using modern technologies like <strong
                                 class="font-semibold text-white">Laravel</strong>, <strong
-                                class="font-semibold text-white">Livewire</strong> e 
+                                class="font-semibold text-white">Livewire</strong> and
                             <strong class="font-semibold text-white">TailwindCSS</strong>.
                         </p>
                     </div>
@@ -75,8 +75,8 @@
                                     </div>
                                 </dt>
                                 <dd class="text-base leading-7 text-gray-300">
-                                    <strong class="font-semibold text-white">Dashboard Intuitivo:</strong> Visão geral
-                                    do saldo, receitas e despesas com gráficos para análise da saúde financeira.
+                                    <strong class="font-semibold text-white">{{ __('Intuitive Dashboard') }}:</strong>
+                                    {{ __('Dashboard overview of balance, income and expenses with charts for financial health analysis.') }}
                                 </dd>
                             </div>
                             {{-- Feature 2 --}}
@@ -91,9 +91,9 @@
                                     </div>
                                 </dt>
                                 <dd class="text-base leading-7 text-gray-300">
-                                    <strong class="font-semibold text-white">Gestão de Transações:</strong> Interface
-                                    para adicionar, editar e visualizar todas as movimentações financeiras de forma
-                                    organizada.
+                                    <strong
+                                        class="font-semibold text-white">{{ __('Transaction Management') }}:</strong>
+                                    {{ __('Interface to add, edit and view all financial movements in an organized way.') }}
                                 </dd>
                             </div>
                             {{-- Feature 3 --}}
@@ -110,9 +110,8 @@
                                     </div>
                                 </dt>
                                 <dd class="text-base leading-7 text-gray-300">
-                                    <strong class="font-semibold text-white">Categorias Flexíveis:</strong> Sistema para
-                                    criar e gerenciar categorias com cores personalizadas, facilitando a identificação
-                                    dos gastos.
+                                    <strong class="font-semibold text-white">{{ __('Flexible Categories') }}:</strong>
+                                    {{ __('System to create and manage categories with custom colors, making it easier to identify expenses.') }}
                                 </dd>
                             </div>
                         </dl>

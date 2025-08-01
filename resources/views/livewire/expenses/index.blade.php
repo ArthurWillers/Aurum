@@ -1,8 +1,8 @@
 <div>
     <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Despesas</h2>
+        <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">{{ __('Expenses') }}</h2>
         <flux:button href="{{ route('expenses.create') }}" wire:navigate.persist icon="plus">
-            Nova Despesa
+            {{ __('New Expense') }}
         </flux:button>
     </div>
 
@@ -13,19 +13,19 @@
                 <tr>
                     <th
                         class="px-6 py-3 text-left text-xs font-medium text-zinc-500 dark:text-zinc-300 uppercase tracking-wider">
-                        Descrição</th>
+                        {{ __('Description') }}</th>
                     <th
                         class="px-6 py-3 text-left text-xs font-medium text-zinc-500 dark:text-zinc-300 uppercase tracking-wider">
-                        Valor</th>
+                        {{ __('Value') }}</th>
                     <th
                         class="px-6 py-3 text-left text-xs font-medium text-zinc-500 dark:text-zinc-300 uppercase tracking-wider">
-                        Categoria</th>
+                        {{ __('Category') }}</th>
                     <th
                         class="px-6 py-3 text-left text-xs font-medium text-zinc-500 dark:text-zinc-300 uppercase tracking-wider">
-                        Data</th>
+                        {{ __('Date') }}</th>
                     <th
                         class="px-6 py-3 text-end text-xs font-medium text-zinc-500 dark:text-zinc-300 uppercase tracking-wider">
-                        Ações</th>
+                        {{ __('Actions') }}</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
@@ -43,7 +43,7 @@
                             - R$ {{ number_format($expense->amount, 2, ',', '.') }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-zinc-600 dark:text-zinc-300">
-                            {{ $expense->category->name ?? 'Sem categoria' }}
+                            {{ $expense->category->name ?? __('No category') }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-zinc-600 dark:text-zinc-300">
                             {{ $expense->date->format('d/m/Y') }}
@@ -53,10 +53,10 @@
                                 <flux:button icon="ellipsis-horizontal" />
                                 <flux:menu>
                                     <flux:menu.item href="{{ route('expenses.edit', $expense) }}" wire:navigate.persist
-                                        icon="pencil">Editar</flux:menu.item>
+                                        icon="pencil">{{ __('Edit') }}</flux:menu.item>
                                     <flux:menu.item wire:click="delete({{ $expense->id }})"
-                                        wire:confirm="Tem certeza que deseja excluir esta despesa?" icon="trash"
-                                        variant="danger">Excluir</flux:menu.item>
+                                        wire:confirm="{{ __('Are you sure you want to delete this expense?') }}"
+                                        icon="trash" variant="danger">{{ __('Delete') }}</flux:menu.item>
                                 </flux:menu>
                             </flux:dropdown>
                         </td>
@@ -64,7 +64,7 @@
                 @empty
                     <tr>
                         <td colspan="5" class="px-6 py-12 text-center text-sm text-zinc-600 dark:text-zinc-200">
-                            Você ainda não cadastrou nenhuma despesa nesse mês.
+                            {{ __('You haven\'t registered any expenses this month.') }}
                         </td>
                     </tr>
                 @endforelse

@@ -5,11 +5,9 @@ namespace App\Livewire\Categories;
 use App\Enums\CategoryType;
 use Illuminate\Validation\Rules\Enum;
 use Livewire\Component;
-use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 
-#[Title('Nova Categoria')]
 class Create extends Component
 {
     #[Validate('required|string|min:3|max:255')]

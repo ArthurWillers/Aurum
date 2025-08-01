@@ -2,15 +2,12 @@
 
 namespace App\Livewire\Categories;
 
-
 use Livewire\Component;
 use App\Models\Category;
 use App\Enums\CategoryType;
 use Illuminate\Validation\Rules\Enum;
 use Livewire\Attributes\Validate;
-use Livewire\Attributes\Title;
 
-#[Title('Editar Categoria')]
 class Edit extends Component
 {
     public Category $category;

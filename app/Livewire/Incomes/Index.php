@@ -5,15 +5,11 @@ namespace App\Livewire\Incomes;
 use App\Models\Income;
 use Carbon\Carbon;
 use Livewire\Component;
-use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Title;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
-#[Layout('components.layouts.app')]
-#[Title('Receitas')]
 class Index extends Component
 {
     use WithPagination;

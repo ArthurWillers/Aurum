@@ -4,11 +4,10 @@ namespace App\Livewire\Incomes;
 
 use Carbon\Carbon;
 use Livewire\Component;
-use Livewire\Attributes\Title;
+
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 
-#[Title('Nova Receita')]
 class Create extends Component
 {
     #[Validate('required|string|min:3|max:255')]

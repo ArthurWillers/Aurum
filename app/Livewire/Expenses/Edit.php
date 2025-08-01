@@ -2,14 +2,11 @@
 
 namespace App\Livewire\Expenses;
 
-use App\Models\Category;
 use App\Models\Expense;
 use Livewire\Component;
-use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 
-#[Title('Editar Despesa')]
 class Edit extends Component
 {
     public Expense $expense;
