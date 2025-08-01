@@ -1,6 +1,4 @@
 <div>
-    <x-toast />
-
     <div class="flex justify-between items-center mb-6">
         <flux:heading class="text-xl">Categorias</flux:heading>
 
@@ -43,9 +41,12 @@
                                 <flux:button icon="ellipsis-horizontal" class="cursor-pointer" />
 
                                 <flux:menu>
-                                    <flux:menu.item href="{{ route('categories.edit', $category) }}" wire:navigate.persist icon="pencil" iconVariant="outline" label="Editar">Editar</flux:menu.item>
+                                    <flux:menu.item href="{{ route('categories.edit', $category) }}"
+                                        wire:navigate.persist icon="pencil" iconVariant="outline" label="Editar">Editar
+                                    </flux:menu.item>
 
-                                    <flux:menu.item wire:click="delete({{ $category->id }})" class="cursor-pointer" icon="trash" iconVariant="outline" variant="danger">Excluir</flux:menu.item>
+                                    <flux:menu.item wire:click="delete({{ $category->id }})" class="cursor-pointer"
+                                        icon="trash" iconVariant="outline" variant="danger">Excluir</flux:menu.item>
                                 </flux:menu>
 
                             </flux:dropdown>
