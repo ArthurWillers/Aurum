@@ -11,7 +11,7 @@
             <div class="flex flex-col gap-6">
 
                 <flux:input wire:model="name" :label="__('Name')" id="name"
-                    placeholder="Ex: Salary, Supermarket, Leisure" autofocus />
+                    :placeholder="__('Ex: Salary, Supermarket, Leisure')" autofocus />
 
                 <flux:radio.group wire:model="type" :label="__('Type')" class="py-1">
                     <flux:radio value="expense" :label="__('Expense')" />

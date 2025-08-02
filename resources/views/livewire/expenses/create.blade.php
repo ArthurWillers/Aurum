@@ -17,8 +17,8 @@
                     <flux:radio value="installment" :label="__('Installment')" />
                 </flux:radio.group>
 
-                <flux:input wire:model="description" :label="__('Description')" placeholder="Ex: Grocery Shopping"
-                    autofocus />
+                <flux:input wire:model="description" :label="__('Description')"
+                    :placeholder="__('Ex: Grocery Shopping')" autofocus />
 
                 <div x-show="expenseType === 'single' || expenseType === 'recurring'">
                     <flux:input wire:model="amount"

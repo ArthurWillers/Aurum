@@ -8,7 +8,7 @@
         <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-xl border border-zinc-200 dark:border-zinc-700 p-6">
             <div class="flex flex-col gap-6">
                 <flux:input wire:model="description" :label="__('Description')" id="description"
-                    placeholder="Ex: Salary, Sale, etc." autofocus />
+                    :placeholder="__('Ex: Salary, Sale, etc.')" autofocus />
                 <flux:input wire:model="amount" :label="__('Value')" id="amount" type="number" step="0.01"
                     min="0.01" prefix="{{ auth()->user()->currency_symbol ?? '$' }}" />
                 <flux:input wire:model="date" :label="__('Date')" id="date" type="date" />
