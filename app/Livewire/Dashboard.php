@@ -9,38 +9,61 @@ use Carbon\Carbon;
 
 class Dashboard extends Component
 {
-    public $totalIncomes = 0;
-    public $totalExpenses = 0;
-    public $balance = 0;
+    public $totalMonthlyIncomes = 0;
+    public $totalMonthlyExpenses = 0;
+    public $monthlyBalance = 0;
 
     public function mount()
     {
-        $this->loadCardData();
+        $this->loadData();
     }
 
     #[On('month-changed')]
     public function refreshData()
     {
-        $this->loadCardData();
+        $this->loadData();
     }
 
-    private function loadCardData()
+    private function getSelectedDate()
     {
         $selectedMonth = session('selected_month', now()->format('Y-m'));
-        $date = Carbon::parse($selectedMonth);
-        $user = Auth::user();
+        return Carbon::parse($selectedMonth);
+    }
 
-        $this->totalIncomes = $user->incomes()
+    private function getCurrentUser()
+    {
+        return Auth::user();
+    }
+
+    private function getMonthlyIncomes($date = null, $user = null)
+    {
+        $date = $date ?? $this->getSelectedDate();
+        $user = $user ?? $this->getCurrentUser();
+
+        return $user->incomes()
             ->whereYear('date', $date->year)
             ->whereMonth('date', $date->month)
             ->sum('amount');
+    }
 
-        $this->totalExpenses = $user->expenses()
+    private function getMonthlyExpenses($date = null, $user = null)
+    {
+        $date = $date ?? $this->getSelectedDate();
+        $user = $user ?? $this->getCurrentUser();
+
+        return $user->expenses()
             ->whereYear('date', $date->year)
             ->whereMonth('date', $date->month)
             ->sum('amount');
+    }
 
-        $this->balance = $this->totalIncomes - $this->totalExpenses;
+    private function loadData()
+    {
+        // valores do mês atual
+        $this->totalMonthlyIncomes = $this->getMonthlyIncomes();
+        $this->totalMonthlyExpenses = $this->getMonthlyExpenses();
+        $this->monthlyBalance = $this->totalMonthlyIncomes - $this->totalMonthlyExpenses;
+        
     }
 
     public function render()
