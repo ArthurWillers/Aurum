@@ -49,12 +49,9 @@
                             {{ __('Personal Financial Manager') }}
                         </h1>
                         <p class="mt-6 text-lg leading-8 text-gray-300 text-justify">
-                            Aurum is free software under GPLv3 license, for personal finance management. The system
-                            allows the user to register and track their income and expense transactions, as well as
-                            organize them into customizable categories for better analysis and financial control. The
-                            application was built using modern technologies like <strong
-                                class="font-semibold text-white">Laravel</strong>, <strong
-                                class="font-semibold text-white">Livewire</strong> and
+                            {{ __('Aurum is free software under GPLv3 license, for personal finance management. The system allows the user to register and track their income and expense transactions, as well as organize them into customizable categories for better analysis and financial control. The application was built using modern technologies like') }}
+                            <strong class="font-semibold text-white">Laravel</strong>, <strong
+                                class="font-semibold text-white">Livewire</strong> {{ __('and') }}
                             <strong class="font-semibold text-white">TailwindCSS</strong>.
                         </p>
                     </div>
