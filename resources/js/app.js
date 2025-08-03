@@ -1,2 +1,1 @@
-import ApexCharts from 'apexcharts';
-window.ApexCharts = ApexCharts;
+// Chart library removed - no longer using charts in dashboard

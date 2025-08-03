@@ -73,7 +73,7 @@
                                 </dt>
                                 <dd class="text-base leading-7 text-gray-300">
                                     <strong class="font-semibold text-white">{{ __('Intuitive Dashboard') }}:</strong>
-                                    {{ __('Dashboard overview of balance, income and expenses with charts for financial health analysis.') }}
+                                    {{ __('Dashboard overview of balance, income and expenses for financial health analysis.') }}
                                 </dd>
                             </div>
                             {{-- Feature 2 --}}

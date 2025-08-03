@@ -56,7 +56,6 @@ Aurum é uma aplicação web completa para gerenciamento financeiro pessoal, des
 - **Receitas**: Cadastro e gestão de entradas financeiras
 - **Despesas**: Controle detalhado de gastos
 - **Categorias**: Organização por tipos de transação
-- **Gráficos**: Visão consolidada das finanças
 
 ### Interface
 - Design responsivo e moderno

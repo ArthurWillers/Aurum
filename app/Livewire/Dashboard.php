@@ -14,11 +14,6 @@ class Dashboard extends Component
     public $totalMonthlyExpenses = 0;
     public $monthlyBalance = 0;
 
-    // Propriedades para os gráficos
-    public array $expensesByCategory = [];
-    public array $incomesByCategory = [];
-    public array $financialEvolution = [];
-
     // Propriedade para data selecionada
     private Carbon $selectedDate;
 
@@ -40,7 +35,6 @@ class Dashboard extends Component
     {
         $this->setSelectedDate();
         $this->loadCardData();
-        $this->loadChartData();
     }
 
     /**
@@ -71,96 +65,6 @@ class Dashboard extends Component
             ->sum('amount');
 
         $this->monthlyBalance = $this->totalMonthlyIncomes - $this->totalMonthlyExpenses;
-    }
-
-    /**
-     * Carrega dados dos gráficos
-     */
-    private function loadChartData(): void
-    {
-        $this->loadExpensesByCategory();
-        $this->loadIncomesByCategory();
-        $this->loadFinancialEvolution();
-    }
-
-    /**
-     * Carrega despesas agrupadas por categoria
-     */
-    private function loadExpensesByCategory(): void
-    {
-        $user = Auth::user();
-        $year = $this->selectedDate->year;
-        $month = $this->selectedDate->month;
-
-        $expenses = $user->expenses()
-            ->with('category')
-            ->whereYear('date', $year)
-            ->whereMonth('date', $month)
-            ->get();
-
-        $this->expensesByCategory = $expenses
-            ->groupBy('category.name')
-            ->map(fn($group) => $group->sum('amount'))
-            ->sortDesc()
-            ->toArray();
-    }
-
-    /**
-     * Carrega receitas agrupadas por categoria
-     */
-    private function loadIncomesByCategory(): void
-    {
-        $user = Auth::user();
-        $year = $this->selectedDate->year;
-        $month = $this->selectedDate->month;
-
-        $incomes = $user->incomes()
-            ->with('category')
-            ->whereYear('date', $year)
-            ->whereMonth('date', $month)
-            ->get();
-
-        $this->incomesByCategory = $incomes
-            ->groupBy('category.name')
-            ->map(fn($group) => $group->sum('amount'))
-            ->sortDesc()
-            ->toArray();
-    }
-
-    /**
-     * Carrega dados de evolução financeira.
-     */
-    private function loadFinancialEvolution(): void
-    {
-        $user = Auth::user();
-        $evolutionData = [
-            'labels' => [],
-            'incomes' => [],
-            'expenses' => [],
-            'balance' => []
-        ];
-
-        for ($i = 6; $i >= -1; $i--) {
-            $loopDate = $this->selectedDate->copy()->subMonths($i);
-
-            $evolutionData['labels'][] = $loopDate->translatedFormat('M/y');
-
-            $income = $user->incomes()
-                ->whereYear('date', $loopDate->year)
-                ->whereMonth('date', $loopDate->month)
-                ->sum('amount');
-
-            $expense = $user->expenses()
-                ->whereYear('date', $loopDate->year)
-                ->whereMonth('date', $loopDate->month)
-                ->sum('amount');
-
-            $evolutionData['incomes'][] = round($income, 2);
-            $evolutionData['expenses'][] = round($expense, 2);
-            $evolutionData['balance'][] = round($income - $expense, 2);
-        }
-
-        $this->financialEvolution = $evolutionData;
     }
 
     public function render()
