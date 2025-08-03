@@ -21,6 +21,7 @@
                         {{ __('Category') }}
                     </label>
                     <flux:select wire:model="category_id" id="category_id">
+                        <option value="" disabled>{{ __('Select a category') }}</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach

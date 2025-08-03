@@ -13,7 +13,7 @@
                     min="0.01" prefix="{{ auth()->user()->currency_symbol ?? '$' }}" />
                 <flux:input wire:model="date" :label="__('Date')" id="date" type="date" />
                 <flux:select wire:model="category_id" :label="__('Category')" id="category_id">
-                    <option value="">{{ __('Select...') }}</option>
+                    <option value="" disabled>{{ __('Select a category') }}</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
