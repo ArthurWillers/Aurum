@@ -135,5 +135,8 @@
   "Top 3 Expenses": "Top 3 Categorias - Despesas",
   "Top 3 Incomes": "Top 3 Categorias - Receitas",
   "No data available for this month": "Nenhum dado disponível para este mês",
-  "of total": "do total"
+  "of total": "do total",
+  "Filter by category": "Filtrar por categoria",
+  "All categories": "Todas as categorias",
+  "Clear filter": "Limpar filtro"
 }

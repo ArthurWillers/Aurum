@@ -3,6 +3,8 @@
 namespace App\Livewire\Expenses;
 
 use App\Models\Expense;
+use App\Models\Category;
+use App\Enums\CategoryType;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -13,6 +15,25 @@ use Illuminate\Support\Facades\Log;
 class Index extends Component
 {
     use WithPagination;
+
+    public $selectedCategory = '';
+
+    /**
+     * Redefine a paginação quando o filtro de categoria mudar.
+     */
+    public function updatedSelectedCategory()
+    {
+        $this->resetPage();
+    }
+
+    /**
+     * Limpa o filtro de categoria.
+     */
+    public function clearCategoryFilter()
+    {
+        $this->selectedCategory = '';
+        $this->resetPage();
+    }
 
     /**
      * Exclui uma despesa.
@@ -44,16 +65,31 @@ class Index extends Component
         $selectedMonth = session('selected_month', now()->format('Y-m'));
         $date = Carbon::parse($selectedMonth);
 
-        $expenses = Auth::user()
+        $expensesQuery = Auth::user()
             ->expenses()
             ->with('category')
             ->whereYear('date', $date->year)
-            ->whereMonth('date', $date->month)
+            ->whereMonth('date', $date->month);
+
+        // Aplicar filtro de categoria se selecionado
+        if ($this->selectedCategory) {
+            $expensesQuery->where('category_id', $this->selectedCategory);
+        }
+
+        $expenses = $expensesQuery
             ->latest('date')
             ->paginate(10);
 
+        // Buscar categorias de despesa para o filtro
+        $categories = Auth::user()
+            ->categories()
+            ->where('type', CategoryType::Expense)
+            ->orderBy('name')
+            ->get();
+
         return view('livewire.expenses.index', [
             'expenses' => $expenses,
+            'categories' => $categories,
         ]);
     }
 }

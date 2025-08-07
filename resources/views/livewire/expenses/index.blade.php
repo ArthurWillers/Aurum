@@ -6,6 +6,25 @@
         </flux:button>
     </div>
 
+    <!-- Filtro por categoria -->
+    <div class="mb-4 flex flex-wrap gap-4">
+        <div class="flex-1 min-w-64">
+            <flux:select wire:model.live="selectedCategory" label="{{ __('Filter by category') }}">
+                <option value="">{{ __('All categories') }}</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </flux:select>
+        </div>
+        @if ($selectedCategory)
+            <div class="pt-6 flex items-center">
+                <flux:button wire:click="clearCategoryFilter" variant="subtle" icon="x-mark" size="base">
+                    {{ __('Clear filter') }}
+                </flux:button>
+            </div>
+        @endif
+    </div>
+
     <div
         class="bg-white dark:bg-zinc-800 rounded-lg shadow-xl border border-zinc-200 dark:border-zinc-700 overflow-x-auto">
         <table class="w-full min-w-full text-left">
