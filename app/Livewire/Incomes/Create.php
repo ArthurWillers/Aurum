@@ -52,7 +52,7 @@ class Create extends Component
         // Toast para redirecionamento
         session()->flash('toast', [
             'type' => 'success',
-            'message' => 'Receita registrada com sucesso!'
+            'message' => __('Income recorded successfully!')
         ]);
 
         return $this->redirectRoute('incomes.index', navigate: true);

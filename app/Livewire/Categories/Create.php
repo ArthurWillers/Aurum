@@ -31,7 +31,7 @@ class Create extends Component
         // Toast para redirecionamento
         session()->flash('toast', [
             'type' => 'success',
-            'message' => 'Categoria criada com sucesso!'
+            'message' => __('Category created successfully!')
         ]);
 
         return $this->redirect('/categories', navigate: true);

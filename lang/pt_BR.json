@@ -138,5 +138,16 @@
   "of total": "do total",
   "Filter by category": "Filtrar por categoria",
   "All categories": "Todas as categorias",
-  "Clear filter": "Limpar filtro"
+  "Clear filter": "Limpar filtro",
+  "Category created successfully!": "Categoria criada com sucesso!",
+  "Category updated successfully!": "Categoria atualizada com sucesso!",
+  "Category deleted successfully!": "Categoria excluída com sucesso!",
+  "Cannot delete category with associated transactions.": "Não é possível excluir categoria com transações associadas.",
+  "Expense recorded successfully!": "Despesa registrada com sucesso!",
+  "Expense updated successfully!": "Despesa atualizada com sucesso!",
+  "Expense deleted successfully!": "Despesa excluída com sucesso!",
+  "Income recorded successfully!": "Receita registrada com sucesso!",
+  "Income updated successfully!": "Receita atualizada com sucesso!",
+  "Income deleted successfully!": "Receita excluída com sucesso!",
+  "An unexpected error occurred. Please try again.": "Ocorreu um erro inesperado. Tente novamente."
 }

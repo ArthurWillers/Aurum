@@ -28,7 +28,7 @@ class Index extends Component
                 // Toast para erro - ação na mesma página
                 $this->dispatch('show-toast', [
                     'type' => 'error',
-                    'message' => 'Não é possível excluir categoria com transações associadas.'
+                    'message' => __('Cannot delete category with associated transactions.')
                 ]);
                 return;
             }
@@ -41,7 +41,7 @@ class Index extends Component
             // Toast para sucesso - ação na mesma página
             $this->dispatch('show-toast', [
                 'type' => 'success',
-                'message' => 'Categoria excluída com sucesso!'
+                'message' => __('Category deleted successfully!')
             ]);
 
             // Dispatch event para atualizar outros componentes se necessário
@@ -53,7 +53,7 @@ class Index extends Component
             // Toast para erro inesperado
             $this->dispatch('show-toast', [
                 'type' => 'error',
-                'message' => 'Ocorreu um erro inesperado. Tente novamente.'
+                'message' => __('An unexpected error occurred. Please try again.')
             ]);
         }
     }

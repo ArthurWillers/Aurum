@@ -57,7 +57,7 @@ class Edit extends Component
         // Toast para redirecionamento
         session()->flash('toast', [
             'type' => 'success',
-            'message' => 'Despesa atualizada com sucesso!'
+            'message' => __('Expense updated successfully!')
         ]);
 
         return $this->redirectRoute('expenses.index', navigate: true);

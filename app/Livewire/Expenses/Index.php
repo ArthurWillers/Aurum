@@ -51,7 +51,7 @@ class Index extends Component
             // Toast para sucesso - ação na mesma página
             $this->dispatch('show-toast', [
                 'type' => 'success',
-                'message' => 'Despesa excluída com sucesso!'
+                'message' => __('Expense deleted successfully!')
             ]);
 
             // Dispatch event para atualizar outros componentes se necessário
@@ -63,7 +63,7 @@ class Index extends Component
             // Toast para erro inesperado
             $this->dispatch('show-toast', [
                 'type' => 'error',
-                'message' => 'Ocorreu um erro inesperado. Tente novamente.'
+                'message' => __('An unexpected error occurred. Please try again.')
             ]);
         }
     }
