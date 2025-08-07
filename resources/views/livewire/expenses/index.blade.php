@@ -7,22 +7,25 @@
     </div>
 
     <!-- Filtro por categoria -->
-    <div class="mb-4 flex flex-wrap gap-4">
-        <div class="flex-1 min-w-64">
-            <flux:select wire:model.live="selectedCategory" label="{{ __('Filter by category') }}">
-                <option value="">{{ __('All categories') }}</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </flux:select>
-        </div>
-        @if ($selectedCategory)
-            <div class="pt-6 flex items-center">
-                <flux:button wire:click="clearCategoryFilter" variant="subtle" icon="x-mark" size="base">
-                    {{ __('Clear filter') }}
-                </flux:button>
+    <div class="mb-4">
+        <div class="flex gap-2 items-end">
+            <div class="flex-1 min-w-0">
+                <flux:select wire:model.live="selectedCategory" label="{{ __('Filter by category') }}">
+                    <option value="">{{ __('All categories') }}</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </flux:select>
             </div>
-        @endif
+            @if ($selectedCategory)
+                <div class="flex-shrink-0">
+                    <flux:button wire:click="clearCategoryFilter" variant="subtle" icon="x-mark" size="base">
+                        <span class="hidden sm:inline">{{ __('Clear filter') }}</span>
+                        <span class="sm:hidden sr-only">{{ __('Clear filter') }}</span>
+                    </flux:button>
+                </div>
+            @endif
+        </div>
     </div>
 
     <div
