@@ -155,11 +155,10 @@
                     setTimeout(triggerToast, 200);
                 });
             }
-
-            // Para navegação SPA do Livewire
-            document.addEventListener('livewire:navigated', () => {
-                setTimeout(triggerToast, 300);
-            });
         })();
     </script>
+    @php
+        // Limpar o toast da sessão após exibi-lo para evitar repetição
+        session()->forget('toast');
+    @endphp
 @endif
