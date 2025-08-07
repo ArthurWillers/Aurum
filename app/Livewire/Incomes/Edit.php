@@ -44,6 +44,13 @@ class Edit extends Component
             'date' => $this->date,
             'category_id' => $this->category_id,
         ]);
+
+        // Toast para redirecionamento
+        session()->flash('toast', [
+            'type' => 'success',
+            'message' => 'Receita atualizada com sucesso!'
+        ]);
+
         return $this->redirectRoute('incomes.index', navigate: true);
     }
 

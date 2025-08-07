@@ -28,6 +28,12 @@ class Create extends Component
             'type' => $this->type,
         ]);
 
+        // Toast para redirecionamento
+        session()->flash('toast', [
+            'type' => 'success',
+            'message' => 'Categoria criada com sucesso!'
+        ]);
+
         return $this->redirect('/categories', navigate: true);
     }
 

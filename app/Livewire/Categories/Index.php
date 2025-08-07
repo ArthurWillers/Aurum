@@ -25,7 +25,11 @@ class Index extends Component
             $this->authorize('delete', $category);
 
             if ($category->expenses()->count() > 0 || $category->incomes()->count() > 0) {
-                // Não é possível excluir categoria com registros associados
+                // Toast para erro - ação na mesma página
+                $this->dispatch('show-toast', [
+                    'type' => 'error',
+                    'message' => 'Não é possível excluir categoria com transações associadas.'
+                ]);
                 return;
             }
 
@@ -34,11 +38,23 @@ class Index extends Component
             // Reset pagination se necessário
             $this->resetPage();
 
+            // Toast para sucesso - ação na mesma página
+            $this->dispatch('show-toast', [
+                'type' => 'success',
+                'message' => 'Categoria excluída com sucesso!'
+            ]);
+
             // Dispatch event para atualizar outros componentes se necessário
             $this->dispatch('category-deleted');
         } catch (\Exception $e) {
             // Log do erro para debug
             Log::error('Erro ao deletar categoria: ' . $e->getMessage());
+
+            // Toast para erro inesperado
+            $this->dispatch('show-toast', [
+                'type' => 'error',
+                'message' => 'Ocorreu um erro inesperado. Tente novamente.'
+            ]);
         }
     }
 }

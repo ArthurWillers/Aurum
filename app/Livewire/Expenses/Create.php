@@ -70,6 +70,12 @@ class Create extends Component
                 break;
         }
 
+        // Toast para redirecionamento
+        session()->flash('toast', [
+            'type' => 'success',
+            'message' => 'Despesa registrada com sucesso!'
+        ]);
+
         return $this->redirectRoute('expenses.index', navigate: true);
     }
 

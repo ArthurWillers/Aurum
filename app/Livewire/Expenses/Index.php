@@ -48,11 +48,23 @@ class Index extends Component
             // Reset pagination se necessário
             $this->resetPage();
 
+            // Toast para sucesso - ação na mesma página
+            $this->dispatch('show-toast', [
+                'type' => 'success',
+                'message' => 'Despesa excluída com sucesso!'
+            ]);
+
             // Dispatch event para atualizar outros componentes se necessário
             $this->dispatch('expense-deleted');
         } catch (\Exception $e) {
             // Log do erro para debug
             Log::error('Erro ao deletar despesa: ' . $e->getMessage());
+
+            // Toast para erro inesperado
+            $this->dispatch('show-toast', [
+                'type' => 'error',
+                'message' => 'Ocorreu um erro inesperado. Tente novamente.'
+            ]);
         }
     }
 

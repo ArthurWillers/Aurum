@@ -35,6 +35,13 @@ class Edit extends Component
             'name' => $this->name,
             'type' => $this->type,
         ]);
+
+        // Toast para redirecionamento
+        session()->flash('toast', [
+            'type' => 'success',
+            'message' => 'Categoria atualizada com sucesso!'
+        ]);
+
         return $this->redirect('/categories', navigate: true);
     }
 

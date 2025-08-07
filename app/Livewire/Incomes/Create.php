@@ -49,6 +49,12 @@ class Create extends Component
             'category_id' => $this->category_id,
         ]);
 
+        // Toast para redirecionamento
+        session()->flash('toast', [
+            'type' => 'success',
+            'message' => 'Receita registrada com sucesso!'
+        ]);
+
         return $this->redirectRoute('incomes.index', navigate: true);
     }
 

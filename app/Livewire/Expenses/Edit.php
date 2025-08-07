@@ -54,6 +54,12 @@ class Edit extends Component
             'category_id' => $this->category_id,
         ]);
 
+        // Toast para redirecionamento
+        session()->flash('toast', [
+            'type' => 'success',
+            'message' => 'Despesa atualizada com sucesso!'
+        ]);
+
         return $this->redirectRoute('expenses.index', navigate: true);
     }
 
