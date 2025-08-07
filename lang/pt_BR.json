@@ -131,5 +131,9 @@
   "Funcionalidades Implementadas": "Funcionalidades Implementadas",
   "Developed by": "Desenvolvido por",
   "View source code on GitHub": "Ver o código-fonte no GitHub",
-  "Reference Month": "Mês de Referência"
+  "Reference Month": "Mês de Referência",
+  "Top 3 Expenses": "Top 3 Categorias - Despesas",
+  "Top 3 Incomes": "Top 3 Categorias - Receitas",
+  "No data available for this month": "Nenhum dado disponível para este mês",
+  "of total": "do total"
 }

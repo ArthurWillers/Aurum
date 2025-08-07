@@ -14,6 +14,10 @@ class Dashboard extends Component
     public $totalMonthlyExpenses = 0;
     public $monthlyBalance = 0;
 
+    // Propriedades para o pódio financeiro
+    public array $topExpenses = [];
+    public array $topIncomes = [];
+
     // Propriedade para data selecionada
     private Carbon $selectedDate;
 
@@ -35,6 +39,7 @@ class Dashboard extends Component
     {
         $this->setSelectedDate();
         $this->loadCardData();
+        $this->loadPodiumData();
     }
 
     /**
@@ -65,6 +70,66 @@ class Dashboard extends Component
             ->sum('amount');
 
         $this->monthlyBalance = $this->totalMonthlyIncomes - $this->totalMonthlyExpenses;
+    }
+
+    /**
+     * Carrega dados do pódio financeiro (top 3 despesas e receitas por categoria)
+     */
+    private function loadPodiumData(): void
+    {
+        $user = Auth::user();
+        $year = $this->selectedDate->year;
+        $month = $this->selectedDate->month;
+
+        // Top 3 Despesas por categoria
+        $topExpensesData = $user->expenses()
+            ->with('category')
+            ->whereYear('date', $year)
+            ->whereMonth('date', $month)
+            ->whereHas('category')
+            ->selectRaw('category_id, SUM(amount) as total_amount')
+            ->groupBy('category_id')
+            ->orderByDesc('total_amount')
+            ->limit(3)
+            ->get()
+            ->map(function ($expense) use ($user) {
+                return [
+                    'name' => $expense->category->name,
+                    'value' => ($user->currency_symbol ?? 'R$') . ' ' . number_format($expense->total_amount, 2, ',', '.'),
+                    'raw_value' => $expense->total_amount
+                ];
+            })
+            ->toArray();
+
+        $this->topExpenses = [
+            'items' => $topExpensesData,
+            'total' => $this->totalMonthlyExpenses
+        ];
+
+        // Top 3 Receitas por categoria
+        $topIncomesData = $user->incomes()
+            ->with('category')
+            ->whereYear('date', $year)
+            ->whereMonth('date', $month)
+            ->whereHas('category')
+            ->selectRaw('category_id, SUM(amount) as total_amount')
+            ->groupBy('category_id')
+            ->orderByDesc('total_amount')
+            ->limit(3)
+            ->get()
+            ->map(function ($income) use ($user) {
+                return [
+                    'name' => $income->category->name,
+                    'value' => ($user->currency_symbol ?? 'R$') . ' ' . number_format($income->total_amount, 2, ',', '.'),
+                    'raw_value' => $income->total_amount
+                ];
+            })
+            ->toArray();
+
+        $this->topIncomes = [
+            'items' => $topIncomesData,
+            'total' => $this->totalMonthlyIncomes
+        ];
     }
 
     public function render()
