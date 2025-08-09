@@ -17,7 +17,7 @@ use App\Livewire\Expenses\Create as ExpensesCreate;
 use App\Livewire\Expenses\Edit as ExpensesEdit;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 })->name('home');
 
 Route::middleware(['auth'])->group(function () {
