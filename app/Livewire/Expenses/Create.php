@@ -29,7 +29,11 @@ class Create extends Component
     public function mount()
     {
         $selectedMonth = session('selected_month', now()->format('Y-m'));
-        $this->date = Carbon::parse($selectedMonth . '-01')->format('Y-m-d');
+        if ($selectedMonth === now()->format('Y-m')) {
+            $this->date = now()->format('Y-m-d');
+        } else {
+            $this->date = Carbon::parse($selectedMonth . '-01')->format('Y-m-d');
+        }
     }
 
     /**
