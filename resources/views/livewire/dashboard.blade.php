@@ -9,10 +9,10 @@
     <div class="grid gap-3 md:grid-cols-3">
         <x-dashboard-card :title="__('Monthly Income')"
             value="{{ auth()->user()->currency_symbol ?? '$' }} {{ number_format($totalMonthlyIncomes, 2, ',', '.') }}"
-            icon="arrow-trending-up" color="green" />
+            icon="arrow-trending-up" color="green" :href="route('incomes.index')" />
         <x-dashboard-card :title="__('Monthly Expenses')"
             value="{{ auth()->user()->currency_symbol ?? '$' }} {{ number_format($totalMonthlyExpenses, 2, ',', '.') }}"
-            icon="arrow-trending-down" color="red" />
+            icon="arrow-trending-down" color="red" :href="route('expenses.index')" />
         <x-dashboard-card :title="__('Monthly Balance')"
             value="{{ auth()->user()->currency_symbol ?? '$' }} {{ number_format($monthlyBalance, 2, ',', '.') }}"
             icon="scale" color="zinc" :value-color="$monthlyBalance >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'" />
