@@ -87,7 +87,7 @@ class Index extends Component
 
         $incomes = $incomesQuery
             ->latest('date')
-            ->paginate(10);
+            ->paginate(9);
 
         // Buscar categorias de receita para o filtro
         $categories = Auth::user()

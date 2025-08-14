@@ -90,7 +90,7 @@ class Index extends Component
 
         $expenses = $expensesQuery
             ->latest('date')
-            ->paginate(10);
+            ->paginate(9);
 
         // Buscar categorias de despesa para o filtro
         $categories = Auth::user()
