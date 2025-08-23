@@ -10,7 +10,7 @@
                 <flux:input wire:model="description" :label="__('Description')" id="description"
                     :placeholder="__('Ex: Salary, Sale, etc.')" autofocus />
                 <flux:input wire:model="amount" :label="__('Value')" id="amount" type="number" step="0.01"
-                    min="0.01" prefix="{{ auth()->user()->currency_symbol ?? '$' }}" />
+                    min="0.01" prefix="R$" />
                 <flux:input wire:model="date" :label="__('Date')" id="date" type="date" />
                 <flux:select wire:model="category_id" :label="__('Category')" id="category_id">
                     <option value="" disabled>{{ __('Select a category') }}</option>

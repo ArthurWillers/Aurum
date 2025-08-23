@@ -57,7 +57,7 @@
                         </td>
                         <td
                             class="px-6 py-4 whitespace-nowrap text-sm text-green-600 dark:text-green-400 font-semibold">
-                            + {{ auth()->user()->currency_symbol ?? '$' }}
+                            + R$
                             {{ number_format($income->amount, 2, ',', '.') }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-zinc-600 dark:text-zinc-300">

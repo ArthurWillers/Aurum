@@ -95,7 +95,7 @@ class Dashboard extends Component
             ->map(function ($expense) use ($user) {
                 return [
                     'name' => $expense->category->name,
-                    'value' => ($user->currency_symbol ?? 'R$') . ' ' . number_format($expense->total_amount, 2, ',', '.'),
+                    'value' => 'R$ ' . number_format($expense->total_amount, 2, ',', '.'),
                     'raw_value' => $expense->total_amount
                 ];
             })
@@ -120,7 +120,7 @@ class Dashboard extends Component
             ->map(function ($income) use ($user) {
                 return [
                     'name' => $income->category->name,
-                    'value' => ($user->currency_symbol ?? 'R$') . ' ' . number_format($income->total_amount, 2, ',', '.'),
+                    'value' => 'R$ ' . number_format($income->total_amount, 2, ',', '.'),
                     'raw_value' => $income->total_amount
                 ];
             })

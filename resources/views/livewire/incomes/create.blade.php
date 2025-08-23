@@ -13,8 +13,8 @@
                 <flux:input wire:model="description" :label="__('Income Description')"
                     :placeholder="__('Ex: Salary, Sale of item, Freelance')" autofocus />
 
-                <flux:input wire:model="amount" label="{{ __('Value') }} ({{ auth()->user()->currency_symbol ?? '$' }})"
-                    type="number" step="0.01" placeholder="1500.00" />
+                <flux:input wire:model="amount" label="{{ __('Value') }} (R$)" type="number" step="0.01"
+                    placeholder="1500.00" />
 
                 <flux:input wire:model="date" :label="__('Receipt Date')" type="date" />
                 <div class="grid gap-2">
