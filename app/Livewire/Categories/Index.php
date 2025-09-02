@@ -4,17 +4,14 @@ namespace App\Livewire\Categories;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
-use Livewire\WithPagination;
 use App\Models\Category;
 use Illuminate\Support\Facades\Log;
 
 class Index extends Component
 {
-    use WithPagination;
-
     public function render()
     {
-        $categories = Auth::user()->categories()->latest()->paginate(10);
+        $categories = Auth::user()->categories()->latest()->get();
 
         return view('livewire.categories.index', compact('categories'));
     }
@@ -34,9 +31,6 @@ class Index extends Component
             }
 
             $category->delete();
-
-            // Reset pagination se necessário
-            $this->resetPage();
 
             // Toast para sucesso - ação na mesma página
             $this->dispatch('show-toast', [
