@@ -90,8 +90,4 @@
             </tbody>
         </table>
     </div>
-
-    <div class="mt-6">
-        {{ $incomes->links() }}
-    </div>
 </div>

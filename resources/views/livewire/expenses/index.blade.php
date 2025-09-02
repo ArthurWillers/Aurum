@@ -94,8 +94,4 @@
             </tbody>
         </table>
     </div>
-
-    <div class="mt-6">
-        {{ $expenses->links() }}
-    </div>
 </div>

@@ -8,23 +8,12 @@ use App\Enums\CategoryType;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\Attributes\On;
-use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class Index extends Component
 {
-    use WithPagination;
-
     public $selectedCategory = '';
-
-    /**
-     * Redefine a paginação quando o filtro de categoria mudar.
-     */
-    public function updatedSelectedCategory()
-    {
-        $this->resetPage();
-    }
 
     /**
      * Limpa o filtro de categoria.
@@ -32,7 +21,6 @@ class Index extends Component
     public function clearCategoryFilter()
     {
         $this->selectedCategory = '';
-        $this->resetPage();
     }
 
     /**
@@ -44,9 +32,6 @@ class Index extends Component
             $this->authorize('delete', $expense);
 
             $expense->delete();
-
-            // Reset pagination se necessário
-            $this->resetPage();
 
             // Toast para sucesso - ação na mesma página
             $this->dispatch('show-toast', [
@@ -90,7 +75,7 @@ class Index extends Component
 
         $expenses = $expensesQuery
             ->latest('date')
-            ->paginate(9);
+            ->get();
 
         // Buscar categorias de despesa para o filtro
         $categories = Auth::user()
